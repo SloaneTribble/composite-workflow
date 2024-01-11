@@ -12,7 +12,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo "GREETING=$INPUT_WHO_TO_GREET" >> $GITHUB_ENV
+    - run: echo "GREETING=$INPUT_WHO_TO_GREET" >> $GITHUB_OUTPUT
       shell: bash
       env: 
         INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
