@@ -9,10 +9,14 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
+  greeting:
+    description: "A fine greeting"
+    value: ${{ steps.greeting-generator.outputs.greeting }}
 runs:
   using: "composite"
   steps:
-    - run: echo "GREETING=$INPUT_WHO_TO_GREET" >> $GITHUB_OUTPUT
+    - id: greeting-generator
+      run: echo "greeting=$INPUT_WHO_TO_GREET" >> $GITHUB_OUTPUT
       shell: bash
       env: 
         INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
