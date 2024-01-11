@@ -12,7 +12,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - run: echo "GREETING=$INPUT_WHO_TO_GREET" >> $GITHUB_ENV
+      env: INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
