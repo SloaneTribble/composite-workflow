@@ -3,6 +3,7 @@ description: 'Greet someone'
 inputs: 
   who-to-greet:  # id of input
     description: 'Who to greet'
+    # settings as required AND providing a default -- redundant? (this was in the docs)
     required: true
     default: 'World' 
 outputs:
@@ -16,11 +17,14 @@ runs:
   using: "composite"
   steps:
     - id: greeting-generator
+      # note that INPUT_WHO... comes from this step's env
       run: echo "greeting=$INPUT_WHO_TO_GREET" >> $GITHUB_OUTPUT
       shell: bash
       env: 
+      # inputs comes from calling workflow
         INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
     - id: random-number-generator
+      # $RANDOM is a bash variable
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
     # Add action's path to the runner system path so it can locate the goodbye.sh script during execution
