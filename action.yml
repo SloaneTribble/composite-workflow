@@ -33,5 +33,5 @@ runs:
     - run: goodbye.sh
       shell: bash
     - id: run-goodbye-js
-      run: node goodbye.js
+      run: node ${{ github.action_path }}/goodbye.js
       shell: bash
