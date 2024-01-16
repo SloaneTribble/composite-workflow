@@ -1,0 +1,1 @@
+console.log("Goodbye from js file");

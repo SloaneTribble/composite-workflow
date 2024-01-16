@@ -32,3 +32,5 @@ runs:
       shell: bash
     - run: goodbye.sh
       shell: bash
+    - id: run-goodbye-js
+      run: node goodbye.js
